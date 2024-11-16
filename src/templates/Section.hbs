@@ -1,0 +1,7 @@
+<div class="section">
+    {{> "components/SectionTitle" this}}
+
+    {{#each modules}}
+    {{> (lookup this 'template') this}}
+    {{/each}}
+</div>

@@ -1,0 +1,13 @@
+<div class="video-wrapper">
+    <div class="video">
+        <iframe class="video" src="{{src}}" frameborder="0" {{attr height=height width=width id=id}}
+            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    {{#if caption}}
+    {{> "Caption" this}}
+    {{/if}}
+    {{#if credit}}
+    {{> "Credit" this}}
+    {{/if}}
+</div>
