@@ -4,26 +4,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-  },
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-    port: 8080,
   },
   module: {
     rules: [
       {
-        test: /\.css$/,  // Match .css files
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.hbs$/, // Handlebars templates
+        test: /\.hbs$/,
         loader: 'handlebars-loader',
         options: {
           helperDirs: path.join(__dirname, 'src/helpers'),
@@ -31,12 +22,12 @@ module.exports = {
             knownHelpersOnly: false,
           },
           partialDirs: [
-            path.join(__dirname, 'src/templates/partials'),  // Path to the partials folder
+            path.join(__dirname, 'src/templates/partials'),
           ],
         },
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i, // For images
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
       {
@@ -51,8 +42,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      inject: true,
     }),
-
   ],
-  mode: 'development', // Change to 'production' for builds
 };

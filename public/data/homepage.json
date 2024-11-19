@@ -18,14 +18,14 @@
             "modules": [
                 {
                     "template": "media/Cartoon",
-                    "src": "/assets/images/cartoons/cookie-jar-monster/cookieJar.svg",
+                    "src": "./assets/images/cartoons/cookie-jar-monster/cookieJar.svg",
                     "alt": "Cookie Jar Monster",
                     "width": "600px",
                     "height": "600px"
                 },
                 {
                     "template": "media/Cartoon",
-                    "src": "/assets/images/cartoons/backstage-clown/clown.svg",
+                    "src": "./assets/images/cartoons/backstage-clown/clown.svg",
                     "alt": "Backstage Clown",
                     "width": "600px",
                     "height": "600px"

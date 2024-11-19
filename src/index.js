@@ -15,7 +15,7 @@ import footerTemplate from './templates/Footer.hbs';
 registerHelpersAndPartials();
 
 // Fetch the JSON data
-fetch('/data/homepage.json')
+fetch('./data/homepage.json')
     .then(response => response.json())
     .then(data => {
         // Set content of each section on the page
