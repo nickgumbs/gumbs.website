@@ -8,6 +8,8 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
+    "lint": "eslint . --ext .ts",
+    "prettier:format": "prettier --config .prettierrc '**/*.{js,ts,mjs,cjs,json,css}' --write",
     "webpack:start": "webpack serve --config webpack.dev.js",
     "webpack:build": "webpack --config webpack.prod.js"
   },
@@ -19,7 +21,6 @@
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
     "cypress": "^13.15.0",
-    "eslint": "^9.12.0",
     "handlebars": "^4.7.8",
     "handlebars-loader": "^1.7.3",
     "html-webpack-plugin": "^5.6.0",

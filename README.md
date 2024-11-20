@@ -14,4 +14,5 @@ This project showcases my personal website, hosted on AWS and designed with a se
 - **CI/CD Pipeline:** Deployed a CI/CD pipeline using GitHub Actions to automate deployment, invalidate edge caches, and run production test suite.
 
 ## Work in Progress
+
 - **Responsive Design:** Improving site responsiveness to different browsers and screen sizes using CSS.

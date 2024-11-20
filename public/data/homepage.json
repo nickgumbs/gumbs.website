@@ -1,127 +1,127 @@
 {
-    "content": {
-        "thoughts": {
-            "title": "Deep Thoughts",
-            "anchor": "deep-thoughts",
-            "modules": [
-                {
-                    "template": "module/Joke",
-                    "src": "https://player.vimeo.com/video/514982216",
-                    "description": "Click Me!",
-                    "id": "joke"
-                }
-            ]
-        },
-        "cartoons": {
-            "title": "Cartoons",
-            "anchor": "cartoons",
-            "modules": [
-                {
-                    "template": "media/Cartoon",
-                    "src": "./assets/images/cartoons/cookie-jar-monster/cookieJar.svg",
-                    "alt": "Cookie Jar Monster",
-                    "width": "600px",
-                    "height": "600px"
-                },
-                {
-                    "template": "media/Cartoon",
-                    "src": "./assets/images/cartoons/backstage-clown/clown.svg",
-                    "alt": "Backstage Clown",
-                    "width": "600px",
-                    "height": "600px"
-                }
-            ]
-        },
-        "animation": {
-            "title": "Animation",
-            "anchor": "animation",
-            "modules": [
-                {
-                    "template": "media/Video",
-                    "src": "https://player.vimeo.com/video/514982216",
-                    "id": "CabinFever",
-                    "credit": "Cabin Fever - Jaden Smith"
-                },
-                {
-                    "template": "media/Video",
-                    "src": "https://player.vimeo.com/video/529806243",
-                    "id": "SummerGirl",
-                    "credit": "Summer Girl - Hush Forte ft. Q"
-                },
-                {
-                    "template": "media/Video",
-                    "src": "https://player.vimeo.com/video/520677980"
-                }
-            ]
+  "content": {
+    "thoughts": {
+      "title": "Deep Thoughts",
+      "anchor": "deep-thoughts",
+      "modules": [
+        {
+          "template": "module/Joke",
+          "src": "https://player.vimeo.com/video/514982216",
+          "description": "Click Me!",
+          "id": "joke"
         }
+      ]
     },
-    "header": {
-        "title": "Nick Gumbs",
-        "objective": [
-            {
-                "items": "Results-driven QA Automation Engineer with 4+ years of experience developing automated test suites for web and mobile applications. A strong team player with proven leadership, communication, and analytical skills focused on delivering high-quality products. You can follow me on "
-            },
-            {
-                "template": "components/Link",
-                "items": "Twitter",
-                "rel": "external",
-                "href": "https://twitter.com/Nicky_Gumbs"
-            },
-            {
-                "items": ", "
-            },
-            {
-                "template": "components/Link",
-                "items": "Instagram",
-                "rel": "external",
-                "href": "https://www.instagram.com/nicky_gumbs/"
-            },
-            {
-                "items": ", and "
-            },
-            {
-                "template": "components/Link",
-                "items": "Letterboxd",
-                "rel": "external",
-                "href": "https://letterboxd.com/nickgumbs/"
-            },
-            {
-                "items": "."
-            }
-        ]
-    },
-    "footer": {
-        "socials": [
-            {
-                "template": "components/SocialLink",
-                "icon": "fa-linkedin-square",
-                "rel": "external",
-                "href": "https://www.linkedin.com/in/nick-gumbs/"
-            },
-            {
-                "template": "components/SocialLink",
-                "icon": "fa-twitter",
-                "rel": "external",
-                "href": "https://twitter.com/Nicky_Gumbs"
-            },
-            {
-                "template": "components/SocialLink",
-                "icon": "fa-ticket",
-                "rel": "external",
-                "href": "https://letterboxd.com/nickgumbs/"
-            },
-            {
-                "template": "components/SocialLink",
-                "icon": "fa-instagram",
-                "rel": "external",
-                "href": "https://www.instagram.com/nicky_gumbs/"
-            }
-        ],
-        "resume": {
-            "template": "components/Link",
-            "items": "My Resumé",
-            "rel": "internal",
-            "href": "https://s3.us-east-2.amazonaws.com/gumbs.website/assets/Nicholas-Gumbs-QA+Automation+Engineer.pdf"
+    "cartoons": {
+      "title": "Cartoons",
+      "anchor": "cartoons",
+      "modules": [
+        {
+          "template": "media/Cartoon",
+          "src": "./assets/images/cartoons/cookie-jar-monster/cookieJar.svg",
+          "alt": "Cookie Jar Monster",
+          "width": "600px",
+          "height": "600px"
+        },
+        {
+          "template": "media/Cartoon",
+          "src": "./assets/images/cartoons/backstage-clown/clown.svg",
+          "alt": "Backstage Clown",
+          "width": "600px",
+          "height": "600px"
         }
+      ]
+    },
+    "animation": {
+      "title": "Animation",
+      "anchor": "animation",
+      "modules": [
+        {
+          "template": "media/Video",
+          "src": "https://player.vimeo.com/video/514982216",
+          "id": "CabinFever",
+          "credit": "Cabin Fever - Jaden Smith"
+        },
+        {
+          "template": "media/Video",
+          "src": "https://player.vimeo.com/video/529806243",
+          "id": "SummerGirl",
+          "credit": "Summer Girl - Hush Forte ft. Q"
+        },
+        {
+          "template": "media/Video",
+          "src": "https://player.vimeo.com/video/520677980"
+        }
+      ]
     }
+  },
+  "header": {
+    "title": "Nick Gumbs",
+    "objective": [
+      {
+        "items": "Results-driven QA Automation Engineer with 4+ years of experience developing automated test suites for web and mobile applications. A strong team player with proven leadership, communication, and analytical skills focused on delivering high-quality products. You can follow me on "
+      },
+      {
+        "template": "components/Link",
+        "items": "Twitter",
+        "rel": "external",
+        "href": "https://twitter.com/Nicky_Gumbs"
+      },
+      {
+        "items": ", "
+      },
+      {
+        "template": "components/Link",
+        "items": "Instagram",
+        "rel": "external",
+        "href": "https://www.instagram.com/nicky_gumbs/"
+      },
+      {
+        "items": ", and "
+      },
+      {
+        "template": "components/Link",
+        "items": "Letterboxd",
+        "rel": "external",
+        "href": "https://letterboxd.com/nickgumbs/"
+      },
+      {
+        "items": "."
+      }
+    ]
+  },
+  "footer": {
+    "socials": [
+      {
+        "template": "components/SocialLink",
+        "icon": "fa-linkedin-square",
+        "rel": "external",
+        "href": "https://www.linkedin.com/in/nick-gumbs/"
+      },
+      {
+        "template": "components/SocialLink",
+        "icon": "fa-twitter",
+        "rel": "external",
+        "href": "https://twitter.com/Nicky_Gumbs"
+      },
+      {
+        "template": "components/SocialLink",
+        "icon": "fa-ticket",
+        "rel": "external",
+        "href": "https://letterboxd.com/nickgumbs/"
+      },
+      {
+        "template": "components/SocialLink",
+        "icon": "fa-instagram",
+        "rel": "external",
+        "href": "https://www.instagram.com/nicky_gumbs/"
+      }
+    ],
+    "resume": {
+      "template": "components/Link",
+      "items": "My Resumé",
+      "rel": "internal",
+      "href": "https://s3.us-east-2.amazonaws.com/gumbs.website/assets/Nicholas-Gumbs-QA+Automation+Engineer.pdf"
+    }
+  }
 }

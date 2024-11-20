@@ -10,27 +10,27 @@ module.exports = merge(common, {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
+    clean: true
   },
   devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       }
-    ],
+    ]
   },
   optimization: {
     minimize: true,
     minimizer: [
       `...`,
-      new CssMinimizerPlugin(), // Only CSS optimization
-    ],
+      new CssMinimizerPlugin() // Only CSS optimization
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: '[name].[contenthash].css'
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -41,7 +41,7 @@ module.exports = merge(common, {
             ignore: ['**/index.html']
           }
         }
-      ],
+      ]
     })
-  ],
+  ]
 });

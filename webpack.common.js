@@ -5,13 +5,13 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.hbs$/,
@@ -19,30 +19,28 @@ module.exports = {
         options: {
           helperDirs: path.join(__dirname, 'src/helpers'),
           precompileOptions: {
-            knownHelpersOnly: false,
+            knownHelpersOnly: false
           },
-          partialDirs: [
-            path.join(__dirname, 'src/templates/partials'),
-          ],
-        },
+          partialDirs: [path.join(__dirname, 'src/templates/partials')]
+        }
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: 'asset/resource'
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
+          loader: 'babel-loader'
+        }
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      inject: true,
-    }),
-  ],
+      inject: true
+    })
+  ]
 };
