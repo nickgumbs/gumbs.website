@@ -8,7 +8,6 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "lint": "eslint . --ext .ts",
     "prettier:format": "prettier --config .prettierrc '**/*.{js,ts,mjs,cjs,json,css}' --write",
     "webpack:start": "webpack serve --config webpack.dev.js",
     "webpack:build": "webpack --config webpack.prod.js"
