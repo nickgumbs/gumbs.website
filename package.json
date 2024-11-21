@@ -9,8 +9,8 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "prettier:format": "prettier --config .prettierrc '**/*.{js,ts,mjs,cjs,json,css}' --write",
-    "webpack:start": "webpack serve --config webpack.dev.js",
-    "webpack:build": "webpack --config webpack.prod.js"
+    "start": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.25.7",
