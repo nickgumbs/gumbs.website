@@ -3,6 +3,8 @@ export class Homepage {
     this.elements = {};
     this.elements.image = '.image img';
     this.elements.siteVisitorCount = '.count';
+    this.elements.jokes = '#joke';
+    this.elements.refreshButton = '#joke';
   }
 
   visit() {
@@ -19,6 +21,14 @@ export class Homepage {
 
   getSiteVisitorCount() {
     return cy.get(this.elements.siteVisitorCount);
+  }
+
+  getJokes() {
+    return cy.get(this.elements.jokes);
+  }
+
+  getRefreshButton() {
+    return cy.get(this.elements.refreshButton);
   }
 }
 

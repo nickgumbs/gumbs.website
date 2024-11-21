@@ -30,4 +30,22 @@ describe('Homepage', () => {
           });
       });
   });
+
+  it('should verify joke module', () => {
+    homepage.visit('/');
+    homepage
+      .getJokes()
+      .as('joke')
+      .invoke('text')
+      .then((firstJoke) => {
+        cy.get('@joke').click();
+        cy.get('@joke')
+          .invoke('text')
+          .should('not.equal', firstJoke)
+          .then((secondJoke) => {
+            homepage.getRefreshButton().click();
+            cy.get('@joke').invoke('text').should('not.equal', secondJoke);
+          });
+      });
+  });
 });
