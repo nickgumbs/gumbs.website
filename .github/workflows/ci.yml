@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -37,14 +37,17 @@ jobs:
         run: npm run cypress:run
 
   deploy:
+    needs: test
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
 
-    needs: test
-    if: github.ref == 'refs/heads/master'
+    permissions:
+      id-token: write 
+
     steps:
       - uses: actions/checkout@v3
 
@@ -66,10 +69,10 @@ jobs:
           path: dist/
 
       - name: Configure AWS CLI
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID}}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: ${{ secrets.DEPLOY_ROLE }}
+          role-session-name: deploy-session
           aws-region: us-east-1
 
       - name: Deploy to S3
