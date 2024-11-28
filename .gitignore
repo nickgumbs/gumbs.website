@@ -4,3 +4,7 @@ screenshots
 videos
 dist
 .DS_Store
+notes.txt
+*.tfstate
+*.tfstate.backup
+.terraform/
