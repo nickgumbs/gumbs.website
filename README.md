@@ -13,3 +13,10 @@ This project showcases my personal website, hosted on AWS and designed with a se
 - **Automated Testing:** Developing unit tests to ensure continued API functionality, visual consistency, and browser compatibility.
 - **CI/CD Pipeline:** Deployed a CI/CD pipeline using GitHub Actions to automate deployment, invalidate edge caches, and run production test suite.
 - **Responsive Design:** Site responsiveness to different browsers and screen sizes using CSS.
+- **Access Management:** Implement OIDC for secure access control within the CI pipeline.
+
+
+
+
+
+
