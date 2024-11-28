@@ -121,7 +121,7 @@
       "template": "components/Link",
       "items": "My Resumé",
       "rel": "internal",
-      "href": "./assets/resume/Nicholas-Gumbs-QA-Automation-Engineer.pdf"
+      "href": "https://s3.us-east-2.amazonaws.com/gumbs.website/assets/Nicholas-Gumbs-QA+Automation+Engineer.pdf"
     }
   }
 }
