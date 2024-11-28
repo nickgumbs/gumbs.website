@@ -1,0 +1,12 @@
+<footer class="footer-wrapper">
+    <div class="resume footer-top">
+        {{> (lookup resume 'template') resume}}
+        <span id="count" class="count"></span>
+    </div>
+    <div class="socials footer-bottom">
+        {{#each socials}}
+        {{> (lookup this 'template') this}}
+        {{/each}}
+        </p>
+    </div>
+</footer>

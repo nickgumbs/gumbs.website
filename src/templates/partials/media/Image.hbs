@@ -1,0 +1,11 @@
+<div class="image">
+    <img src="{{src}}" alt="{{alt}}" {{attr height=height width=width}} />
+
+    {{#if caption}}
+    {{> "Caption" this}}
+    {{/if}}
+    {{#if credit}}
+    {{> "Credit" this}}
+    {{/if}}
+
+</div>

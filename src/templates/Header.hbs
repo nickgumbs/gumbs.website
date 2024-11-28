@@ -1,0 +1,12 @@
+<h1 class="header-h1">{{title}}</h1>
+<div class="objective">
+    <p>
+        {{~#each objective~}}
+        {{~#if template~}}
+        {{> (lookup this 'template') this}}
+        {{~else~}}
+        {{{items}}}
+        {{~/if~}}
+        {{~/each~}}
+    </p>
+</div>
