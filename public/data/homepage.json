@@ -63,6 +63,15 @@
       },
       {
         "template": "components/Link",
+        "items": "Github",
+        "rel": "external",
+        "href": "https://github.com/nickgumbs/"
+      },
+      {
+        "items": ", "
+      },
+      {
+        "template": "components/Link",
         "items": "Twitter",
         "rel": "external",
         "href": "https://twitter.com/Nicky_Gumbs"
@@ -115,13 +124,19 @@
         "icon": "fa-instagram",
         "rel": "external",
         "href": "https://www.instagram.com/nicky_gumbs/"
+      },
+      {
+        "template": "components/SocialLink",
+        "icon": "fa-github",
+        "rel": "external",
+        "href": "https://github.com/nickgumbs/"
       }
     ],
     "resume": {
       "template": "components/Link",
       "items": "My Resumé",
       "rel": "internal",
-      "href": "https://s3.us-east-2.amazonaws.com/gumbs.website/assets/Nicholas-Gumbs-QA+Automation+Engineer.pdf"
+      "href": "./assets/resume/Nicholas-Gumbs-QA-Automation-Engineer.pdf"
     }
   }
 }
