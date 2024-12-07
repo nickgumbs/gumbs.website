@@ -7,4 +7,6 @@ dist
 notes.txt
 *.tfstate
 *.tfstate.backup
+terraform.tfvars
 .terraform/
+generated/
