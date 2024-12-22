@@ -9,9 +9,7 @@ class Image extends BaseComponent {
    */
   constructor(page) {
     super(page);
-    this.elements = {
-      image: '.image img'
-    };
+    this.elements.image = '.image img';
   }
 
   async goto() {

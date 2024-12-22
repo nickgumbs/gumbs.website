@@ -9,10 +9,8 @@ class Joke extends BaseComponent {
    */
   constructor(page) {
     super(page);
-    this.elements = {
-      jokes: '#joke',
-      refreshButton: 'button.refresh'
-    };
+    this.elements.jokes = '#joke';
+    this.elements.refreshButton = 'button.refresh';
   }
 
   async getJokes() {
