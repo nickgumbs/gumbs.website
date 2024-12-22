@@ -11,6 +11,6 @@ terraform.tfvars
 .terraform/
 generated/
 /test-results/
-/playwright-report/
+/reports
 /blob-report/
 /playwright/.cache/
