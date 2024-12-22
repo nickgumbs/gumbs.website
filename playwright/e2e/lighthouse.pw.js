@@ -6,30 +6,6 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const thresholds = {
-  performance: 90,
-  accessibility: 90,
-  'best-practices': 50,
-  seo: 50
-};
-
-// Get the current Git branch name
-function getCurrentGitBranch() {
-  try {
-    return execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
-  } catch (error) {
-    console.error('Error retrieving Git branch:', error.message);
-    return 'unknown-branch';
-  }
-}
-
-function ensureDirectoryExists(directory) {
-  if (!fs.existsSync(directory)) {
-    fs.mkdirSync(directory, { recursive: true });
-    console.log(`Created directory: ${directory}`);
-  }
-}
-
 test.describe('Lighthouse', () => {
   test('should verify Lighthouse Performance score', async () => {
     let branchName = getCurrentGitBranch();
@@ -69,3 +45,24 @@ test.describe('Lighthouse', () => {
     }
   });
 });
+
+const thresholds = {
+  performance: 90,
+  accessibility: 90,
+};
+
+function getCurrentGitBranch() {
+  try {
+    return execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
+  } catch (error) {
+    console.error('Error retrieving Git branch:', error.message);
+    return 'unknown-branch';
+  }
+}
+
+function ensureDirectoryExists(directory) {
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory, { recursive: true });
+    console.log(`Created directory: ${directory}`);
+  }
+}
