@@ -8,13 +8,18 @@
   "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
+    "playwright:run": "playwright test",
     "prettier:format": "prettier --config .prettierrc '**/*.{js,ts,mjs,cjs,json,css}' --write",
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
     "@babel/core": "^7.25.7",
     "@babel/preset-env": "^7.25.7",
+    "@estruyf/github-actions-reporter": "^1.9.2",
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.2",
     "babel-loader": "^9.2.1",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
@@ -24,7 +29,9 @@
     "handlebars-loader": "^1.7.3",
     "html-webpack-plugin": "^5.6.0",
     "jquery": "^3.7.1",
+    "lighthouse": "^12.3.0",
     "mini-css-extract-plugin": "^2.9.2",
+    "playwright-lighthouse": "^4.0.0",
     "prettier": "^3.3.3",
     "style-loader": "^4.0.0",
     "webpack": "^5.95.0",

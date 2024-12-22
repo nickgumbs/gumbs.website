@@ -10,3 +10,7 @@ notes.txt
 terraform.tfvars
 .terraform/
 generated/
+/test-results/
+/reports
+/blob-report/
+/playwright/.cache/
