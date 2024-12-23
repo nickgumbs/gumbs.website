@@ -1,6 +1,6 @@
-const Footer = require('./components/Footer');
+import Footer from './components/Footer.js';
 
-class BasePage {
+export default class BasePage {
   /**
    * @param {import('@playwright/test').Page} page
    */
@@ -14,5 +14,3 @@ class BasePage {
     await this.page.goto(path);
   }
 }
-
-module.exports = BasePage;

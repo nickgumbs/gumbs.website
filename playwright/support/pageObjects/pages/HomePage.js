@@ -1,12 +1,12 @@
-const BasePage = require('../BasePage');
-const Image = require('../components/Image');
-const Joke = require('../components/Joke');
-const VisitorCount = require('../components/VisitorCount');
+import BasePage from '../BasePage.js';
+import Image from '../components/Image.js';
+import Joke from '../components/Joke.js';
+import VisitorCount from '../components/VisitorCount.js';
 
 /**
  * @extends {BasePage}
  */
-class HomePage extends BasePage {
+export default class HomePage extends BasePage {
   /**
    * @param {import('@playwright/test').Page} page
    */
@@ -27,5 +27,3 @@ class HomePage extends BasePage {
     await this.page.waitForLoadState('networkidle');
   }
 }
-
-module.exports = HomePage;

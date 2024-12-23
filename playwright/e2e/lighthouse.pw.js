@@ -1,10 +1,10 @@
 // @ts-check
-const { chromium } = require('@playwright/test');
-const { test, expect } = require('../support/pageObjects/PageFixtures');
-const { playAudit } = require('playwright-lighthouse');
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+import { chromium } from '@playwright/test';
+import { test, expect } from '../support/pageObjects/PageFixtures';
+import { playAudit } from 'playwright-lighthouse';
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
 
 test.describe('Lighthouse', () => {
   test('should verify Lighthouse Performance and Accesibility scores', async () => {

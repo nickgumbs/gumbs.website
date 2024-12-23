@@ -1,5 +1,5 @@
-const { test: base } = require('@playwright/test');
-const HomePage = require('./pages/HomePage');
+import { test as base, expect } from '@playwright/test';
+import HomePage from './pages/HomePage.js';
 
 /**
  * @typedef {Object} PageObjects
@@ -15,4 +15,4 @@ const test = base.extend(
   }
 );
 
-module.exports = { test, expect: base.expect };
+export { test, expect };

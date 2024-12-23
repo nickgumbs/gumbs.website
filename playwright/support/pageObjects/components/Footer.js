@@ -1,9 +1,9 @@
-const BaseComponent = require('../BaseComponent');
+import BaseComponent from '../BaseComponent';
 
 /**
  * @extends {BaseComponent}
  */
-class Footer extends BaseComponent {
+export default class Footer extends BaseComponent {
   /**
    * @param {import('@playwright/test').Page} page
    */
@@ -16,5 +16,3 @@ class Footer extends BaseComponent {
     return this.page.locator(this.elements.footer);
   }
 }
-
-module.exports = Footer;

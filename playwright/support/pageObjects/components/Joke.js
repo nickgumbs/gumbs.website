@@ -1,9 +1,9 @@
-const BaseComponent = require('../BaseComponent');
+import BaseComponent from '../BaseComponent';
 
 /**
  * @extends {BaseComponent}
  */
-class Joke extends BaseComponent {
+export default class Joke extends BaseComponent {
   /**
    * @param {import('@playwright/test').Page} page
    */
@@ -21,5 +21,3 @@ class Joke extends BaseComponent {
     return this.page.locator(this.elements.refreshButton);
   }
 }
-
-module.exports = Joke;
