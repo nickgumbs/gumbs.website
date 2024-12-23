@@ -60,7 +60,7 @@ jobs:
         run: npm ci
 
       - name: Install Playwright Browsers
-        run: npm playwright install --with-deps
+        run: npx playwright install --with-deps
 
       - name: Build
         run: npm run webpack:build
