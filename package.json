@@ -10,8 +10,8 @@
     "cypress:run": "cypress run",
     "playwright:run": "playwright test",
     "prettier:format": "prettier --config .prettierrc '**/*.{js,ts,mjs,cjs,json,css}' --write",
-    "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "webpack:start": "webpack serve --config webpack.dev.js",
+    "webpack:build": "webpack --config webpack.prod.js"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.1",
