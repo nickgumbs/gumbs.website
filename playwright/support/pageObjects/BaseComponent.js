@@ -7,4 +7,5 @@ class BaseComponent {
     this.elements = {};
   }
 }
-module.exports = BaseComponent;
+
+export default BaseComponent;

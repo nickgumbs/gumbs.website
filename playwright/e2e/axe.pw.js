@@ -1,6 +1,6 @@
 // // @ts-check
-const { test, expect } = require('../support/pageObjects/PageFixtures');
-const AxeBuilder = require('@axe-core/playwright').default;
+import { test, expect } from '../support/pageObjects/PageFixtures';
+import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Accessibility Scans', () => {
   test.describe.configure({ retries: 0 });

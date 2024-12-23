@@ -1,9 +1,9 @@
-const BaseComponent = require('../BaseComponent');
+import BaseComponent from '../BaseComponent';
 
 /**
  * @extends {BaseComponent}
  */
-class Image extends BaseComponent {
+export default class Image extends BaseComponent {
   /**
    * @param {import('@playwright/test').Page} page
    */
@@ -20,5 +20,3 @@ class Image extends BaseComponent {
     return this.page.locator(this.elements.image);
   }
 }
-
-module.exports = Image;

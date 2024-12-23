@@ -1,7 +1,6 @@
 // @ts-check
-const { test, expect } = require('../support/pageObjects/PageFixtures');
-const data = require('../../public/data/homepage.json');
-const { homepage } = require('../../cypress/support/pages/Homepage');
+import { test, expect } from '../support/pageObjects/PageFixtures';
+import data from '../../public/data/homepage.json';
 
 test.beforeEach(async ({ homePage }) => {
   await homePage.goto();
@@ -12,8 +11,10 @@ test.describe('Homepage', () => {
     const images = await homePage.image.getImage();
     for (const [index, module] of data.content.cartoons.modules.entries()) {
       const image = images.locator(`nth=${index}`);
-      await expect(image).toHaveAttribute('src', module.src);
-      await expect(image).toHaveAttribute('alt', module.alt);
+      await Promise.all([
+        expect(image).toHaveAttribute('src', module.src),
+        expect(image).toHaveAttribute('alt', module.alt)
+      ]);
     }
   });
 
