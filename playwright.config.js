@@ -4,7 +4,6 @@ const { defineConfig, devices } = require('@playwright/test');
 module.exports = defineConfig({
   testDir: './playwright/e2e',
   testMatch: '**/*.pw.js',
-  outputDir: './reports/playwright',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -15,7 +14,8 @@ module.exports = defineConfig({
   ],
   use: {
     baseURL: 'https://gumbs.website',
-    trace: 'on-first-retry'
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure'
   },
 
   projects: [
