@@ -1,9 +1,9 @@
-const BaseComponent = require('../BaseComponent');
+import BaseComponent from '../BaseComponent';
 
 /**
  * @extends {BaseComponent}
  */
-class VisitorCount extends BaseComponent {
+export default class VisitorCount extends BaseComponent {
   /**
    * @param {import('@playwright/test').Page} page
    */
@@ -18,5 +18,3 @@ class VisitorCount extends BaseComponent {
     return this.page.locator(this.elements.siteVisitorCount);
   }
 }
-
-module.exports = VisitorCount;
