@@ -34,7 +34,16 @@ jobs:
         run: npx wait-on http://localhost:8080
 
       - name: Run Cypress tests
-        run: npm run cypress:run
+        run: |
+          npm run cypress:ci
+
+      - name: Upload Cypress test report
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-report
+          path: reports/cypress
+          retention-days: 1
 
   deploy:
     needs: test
@@ -86,8 +95,9 @@ jobs:
         run: |
           npm run playwright:run
 
-      - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
+      - name: Upload Playwright test report
+        uses: actions/upload-artifact@v4
+        if: '!cancelled()' # Upload Lighthouse report unless cancelled
         with:
           name: playwright-report
           path: reports/

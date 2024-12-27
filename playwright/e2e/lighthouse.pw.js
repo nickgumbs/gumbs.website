@@ -1,13 +1,15 @@
 // @ts-check
 import { chromium } from '@playwright/test';
-import { test, expect } from '../support/pageObjects/PageFixtures';
-import { playAudit } from 'playwright-lighthouse';
+import { test } from '../support/pageObjects/PageFixtures';
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
 test.describe('Lighthouse', () => {
   test('should verify Lighthouse Performance and Accesibility scores', async () => {
+    // Dynamically import playwright-lighthouse
+    const { playAudit } = await import('playwright-lighthouse');
+
     let branchName = getCurrentGitBranch();
     branchName = branchName.replace(/[\/\.]/g, '-');
     const reportName = `lighthouse-${branchName}.html`;
