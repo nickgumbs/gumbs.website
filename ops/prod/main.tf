@@ -18,13 +18,9 @@ locals {
 }
 
 // S3 Bucket and policies for website
-module "website_s3_bucket" {
-  source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 4.2.2"
-
+resource "aws_s3_bucket" "website_s3_bucket" {
   bucket        = var.bucket_name
-  create_bucket = true
-
+  force_destroy = true
   tags = {
     Environment = var.environment
     Project     = "personal-website"
@@ -32,7 +28,7 @@ module "website_s3_bucket" {
 }
 
 resource "aws_s3_bucket_policy" "website_s3_bucket_policy" {
-  bucket = module.website_s3_bucket.s3_bucket_id
+  bucket = aws_s3_bucket.website_s3_bucket.id
   policy = data.aws_iam_policy_document.allow_access_from_cloudfront_distribution.json
 }
 
@@ -44,7 +40,7 @@ data "aws_iam_policy_document" "allow_access_from_cloudfront_distribution" {
     actions = ["s3:GetObject"]
 
     resources = [
-      "${module.website_s3_bucket.s3_bucket_arn}/*"
+      "${aws_s3_bucket.website_s3_bucket.arn}/*"
     ]
     principals {
       type        = "Service"
@@ -61,7 +57,7 @@ data "aws_iam_policy_document" "allow_access_from_cloudfront_distribution" {
 #  Upload built files from /dist
 resource "aws_s3_object" "website_files" {
   for_each     = fileset(local.dist_filepath, "**")
-  bucket       = module.website_s3_bucket.s3_bucket_id
+  bucket       = aws_s3_bucket.website_s3_bucket.id
   key          = each.key
   content_type = lookup(local.content_types, reverse(split(".", each.key))[0], "text/plain")
   source       = "${local.dist_filepath}/${each.value}"
@@ -70,9 +66,9 @@ resource "aws_s3_object" "website_files" {
 
 resource "aws_cloudfront_distribution" "website_cloudfront_distribution" {
   origin {
-    domain_name              = module.website_s3_bucket.s3_bucket_bucket_regional_domain_name
+    domain_name              = aws_s3_bucket.website_s3_bucket.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.website_oac.id
-    origin_id                = module.website_s3_bucket.s3_bucket_id
+    origin_id                = aws_s3_bucket.website_s3_bucket.id
   }
 
   enabled             = true
@@ -87,7 +83,7 @@ resource "aws_cloudfront_distribution" "website_cloudfront_distribution" {
     allowed_methods        = ["GET", "HEAD"]
     cached_methods         = ["GET", "HEAD"]
     viewer_protocol_policy = "redirect-to-https"
-    target_origin_id       = module.website_s3_bucket.s3_bucket_id
+    target_origin_id       = aws_s3_bucket.website_s3_bucket.id
   }
 
   restrictions {
@@ -109,7 +105,7 @@ resource "aws_cloudfront_distribution" "website_cloudfront_distribution" {
 }
 
 resource "aws_cloudfront_origin_access_control" "website_oac" {
-  name                              = module.website_s3_bucket.s3_bucket_bucket_regional_domain_name
+  name                              = aws_s3_bucket.website_s3_bucket.bucket_regional_domain_name
   description                       = "Origin Access Control for ${var.environment} environment"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
@@ -124,8 +120,55 @@ resource "aws_acm_certificate" "website_certificate" {
   domain_name               = var.root_domain
   key_algorithm             = "RSA_2048"
   validation_method         = "DNS"
-  subject_alternative_names = ["*.${var.root_domain}"] #, var.root_domain]
+  subject_alternative_names = ["www.${var.root_domain}", "*.${var.root_domain}"]
   options {
     certificate_transparency_logging_preference = "ENABLED"
+  }
+}
+
+resource "aws_route53_zone" "website_zone" {
+  force_destroy = "false"
+  name          = var.root_domain
+  tags = {
+    Project = "personal-website"
+  }
+}
+
+resource "aws_route53_record" "cname_records" {
+  for_each = { for dvo in aws_acm_certificate.website_certificate.domain_validation_options : dvo.domain_name => dvo }
+
+  zone_id = aws_route53_zone.website_zone.zone_id
+  name    = each.value.resource_record_name
+  type    = each.value.resource_record_type
+  records = [each.value.resource_record_value]
+  ttl     = 300
+}
+
+resource "aws_acm_certificate_validation" "validation" {
+  certificate_arn         = aws_acm_certificate.website_certificate.arn
+  validation_record_fqdns = [for record in aws_route53_record.cname_records : record.fqdn]
+}
+
+resource "aws_route53_record" "alias" {
+  zone_id = aws_route53_zone.website_zone.zone_id
+  name    = var.root_domain
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.website_cloudfront_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.website_cloudfront_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "alias_ipv6" {
+  zone_id = aws_route53_zone.website_zone.zone_id
+  name    = var.root_domain
+  type    = "AAAA"
+
+  alias {
+    name                   = aws_cloudfront_distribution.website_cloudfront_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.website_cloudfront_distribution.hosted_zone_id
+    evaluate_target_health = false
   }
 }
