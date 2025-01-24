@@ -29,3 +29,8 @@ variable "zone_id" {
   description = "The Route 53 hosted zone ID"
   type        = string
 }
+
+variable "dist_filepath" {
+  description = "Path to Dist files"
+  type        = string
+}
