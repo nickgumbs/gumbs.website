@@ -4,9 +4,13 @@ variable "region" {
   default     = "us-east-1"
 }
 
-# Production Variables
+variable "environment" {
+  description = "Environment to deploy"
+  type        = string
+}
+
 variable "bucket_name" {
-  description = "Bucket Name for production"
+  description = "Bucket Name"
   type        = string
   default     = "example-bucket"
 }
@@ -24,37 +28,10 @@ variable "hosted_zone_name" {
 }
 
 variable "cache_policy_name" {
-  description = "Cloudfront Cache Policy Name for production"
+  description = "Cloudfront Cache Policy Name"
   type        = string
 }
 
-# Staging Variables
-variable "staging_cache_policy_name" {
-  description = "Cloudfront Cache Policy Name for staging"
-  type        = string
-}
-
-variable "staging_root_domain" {
-  description = "Staging Domain Name (e.g., staging.example.com)"
-  type        = string
-}
-
-variable "staging_bucket_name" {
-  description = "Staging Bucket Name"
-  type        = string
-}
-
-variable "staging_index_page" {
-  description = "Root Object for Staging Website (e.g., index.html)"
-  type        = string
-}
-
-variable "staging_dist_filepath" {
-  description = "Relative Path to Dist files for staging"
-  type        = string
-}
-
-# Common Variables
 variable "index_page" {
   description = "Root Object for Static Website (e.g., index.html)"
   type        = string
@@ -62,6 +39,28 @@ variable "index_page" {
 }
 
 variable "dist_filepath" {
-  description = "Relative Path to Dist files for production"
+  description = "Relative Path to Dist files"
   type        = string
+}
+
+variable "ddb_jokes_table_data" {
+  description = "DynamoDB Jokes table data"
+  type = object({
+    name = string
+    primary_key = object({
+      name = string
+      type = string
+    })
+  })
+}
+
+variable "ddb_visitor_table_data" {
+  description = "DynamoDB Visitor Count table data"
+  type = object({
+    name = string
+    primary_key = object({
+      name = string
+      type = string
+    })
+  })
 }

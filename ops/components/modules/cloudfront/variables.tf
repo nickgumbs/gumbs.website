@@ -1,5 +1,3 @@
-# modules/website_infrastructure/variables.tf
-
 variable "environment" {
   description = "The environment (e.g., production, staging)"
   type        = string
@@ -25,12 +23,17 @@ variable "bucket_name" {
   type        = string
 }
 
-variable "zone_id" {
-  description = "The Route 53 hosted zone ID"
+variable "s3_bucket_regional_domain_name" {
+  description = "The Regional Domain name of the S3 bucket"
   type        = string
 }
 
-variable "dist_filepath" {
-  description = "Path to Dist files"
+variable "acm_certificate_arn" {
+  description = "ARN for ACM Certificate"
+  type        = string
+}
+
+variable "s3_bucket_id" {
+  description = "S3 Bucket ID"
   type        = string
 }
