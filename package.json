@@ -1,7 +1,7 @@
 {
-  "name": "gumbs.website",
+  "name": "gumbs.me",
   "version": "1.0.0",
-  "description": "for https://gumbs.website",
+  "description": "for https://gumbs.me",
   "author": "Nick Gumbs",
   "license": "ISC",
   "main": "index.js",

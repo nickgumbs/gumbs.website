@@ -3,7 +3,7 @@
 // Handle the request
 function reqListener() {
   var data = JSON.parse(this.responseText);
-  var count = data['gumbs.website'];
+  var count = data['gumbs.me'];
 
   document.getElementById('count').innerHTML = 'Site Visitor Count: ' + count;
 }

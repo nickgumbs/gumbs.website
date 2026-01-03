@@ -18,7 +18,7 @@ locals {
 }
 
 module "s3" {
-  source              = "../components/modules/s3"
+  source              = "../../components/modules/s3"
   environment         = var.environment
   bucket_name         = local.bucket_name
   root_domain         = var.root_domain
@@ -27,7 +27,7 @@ module "s3" {
 }
 
 module "cloudfront" {
-  source                         = "../components/modules/cloudfront"
+  source                         = "../../components/modules/cloudfront"
   bucket_name                    = local.bucket_name
   root_domain                    = var.root_domain
   cache_policy_name              = var.cache_policy_name
@@ -36,17 +36,16 @@ module "cloudfront" {
   s3_bucket_id                   = module.s3.s3_bucket_id
   s3_bucket_regional_domain_name = module.s3.s3_bucket_regional_domain_name
   acm_certificate_arn            = module.acm.acm_certificate_arn
-
 }
 
 module "acm" {
-  source      = "../components/modules/acm"
+  source      = "../../components/modules/acm"
   root_domain = var.root_domain
   zone_id     = data.aws_route53_zone.hosted_zone.id
 }
 
 module "route53" {
-  source            = "../components/modules/route53"
+  source            = "../../components/modules/route53"
   zone_id           = data.aws_route53_zone.hosted_zone.id
   root_domain       = var.root_domain
   cf_domain_name    = module.cloudfront.cf_domain_name
@@ -54,7 +53,7 @@ module "route53" {
 }
 
 module "dynamodb" {
-  source             = "../components/modules/dynamodb"
+  source             = "../../components/modules/dynamodb"
   jokes_table_data   = var.ddb_jokes_table_data
   visitor_table_data = var.ddb_visitor_table_data
   environment        = var.environment
