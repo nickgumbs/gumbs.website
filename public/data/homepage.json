@@ -61,7 +61,7 @@
     "title": "Nick Gumbs",
     "objective": [
       {
-        "items": "Results-driven QA Automation Engineer with 4+ years of experience developing automated test suites for web and mobile applications. A strong team player with proven leadership, communication, and analytical skills focused on delivering high-quality products. You can follow me on "
+        "items": "DevOps Engineer with 5+ years of experience supporting cloud-native web and backend systems through infrastructure automation, CI/CD pipelines, and platform reliability initiatives. Proven ability to improve deployment confidence, system resilience, and release quality at scale. You can follow me on "
       },
       {
         "template": "components/Link",
@@ -147,7 +147,7 @@
       "template": "components/Link",
       "items": "My Resumé",
       "rel": "internal",
-      "href": "./assets/resume/Nicholas-Gumbs-QA-Automation-Engineer.pdf",
+      "href": "./assets/resume/Nicholas-Gumbs-DevOps-Engineer.pdf",
       "aria-label": "Resume"
     }
   }
