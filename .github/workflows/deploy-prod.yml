@@ -54,8 +54,7 @@ jobs:
             --cache-control "no-cache" \
             --include "*.html" \
             --include "data/*" \
-            --exclude "conf/*" \
-            --exclude "*"
+            --exclude "conf/*"
 
       - name: Invalidate CloudFront cache
         run: |

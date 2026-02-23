@@ -70,7 +70,7 @@ module "apigateway" {
 
 resource "aws_s3_object" "app_config" {
   bucket       = module.s3.s3_bucket_id
-  key          = "data/config.json"
+  key          = "conf/config.json"
   content_type = "application/json"
   content = jsonencode({
     api = {
