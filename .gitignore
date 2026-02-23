@@ -8,9 +8,11 @@ notes.txt
 *.tfstate
 *.tfstate.backup
 terraform.tfvars
-.terraform/
+.terraform
 generated/
 /test-results/
 /reports
 /blob-report/
 /playwright/.cache/
+.claude
+conf/

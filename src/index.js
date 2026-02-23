@@ -14,9 +14,14 @@ import footerTemplate from './templates/Footer.hbs';
 registerHelpersAndPartials();
 
 // Fetch the JSON data
-fetch('./data/homepage.json')
-  .then((response) => response.json())
-  .then((data) => {
+Promise.all([
+  fetch('./data/homepage.json').then((r) => r.json()),
+  fetch('./conf/config.json')
+    .then((r) => r.json())
+    .catch(() => ({}))
+])
+  .then(([data, config]) => {
+    window.APP_CONFIG = config;
     // Set content of each section on the page
     const container = document.getElementById('content');
     const header = document.getElementById('header');
@@ -32,8 +37,7 @@ fetch('./data/homepage.json')
     footer.innerHTML += footerTemplate(data.footer);
 
     // Dispatch an event indicating templates are loaded
-    const templatesLoadedEvent = new Event('templatesLoaded');
-    document.dispatchEvent(templatesLoadedEvent);
+    document.dispatchEvent(new Event('templatesLoaded'));
   })
   .catch((error) => console.error('Error loading data:', error));
 

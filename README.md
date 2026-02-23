@@ -1,8 +1,51 @@
-# Personal Website: [https://gumbs.website](https://gumbs.website)
+# Personal Website: [https://gumbs.me](https://gumbs.me)
 
 ## Overview
 
 This project showcases my personal website, hosted on AWS and designed with a serverless architecture for improved performance and scalability.
+
+## Local Development
+
+### Prerequisites
+
+- Node.js and npm (LTS recommended)
+
+### Install
+
+```bash
+npm install
+```
+
+### Run Locally
+
+```bash
+npm run webpack:start
+```
+
+This starts the dev server at `http://localhost:8080` and serves static content from `public/`.
+
+### Build
+
+```bash
+npm run webpack:build
+```
+
+Build output is written to `dist/`.
+
+### Test
+
+```bash
+# Run Cypress in interactive mode (expects the dev server running)
+npm run cypress:open
+
+# Run Cypress headless (expects the dev server running)
+npm run cypress:run
+
+# Run Playwright tests (defaults to https://gumbs.me)
+npm run playwright:run
+```
+
+If you want Playwright to run against a local build, update `baseURL` in `playwright.config.js` or set it via CLI.
 
 ## Key Features
 
@@ -14,7 +57,6 @@ This project showcases my personal website, hosted on AWS and designed with a se
 - **CI/CD Pipeline:** Deployed a CI/CD pipeline using GitHub Actions to automate deployment, invalidate edge caches, and run production test suite.
 - **Responsive Design:** Site responsiveness to different browsers and screen sizes using CSS.
 - **Access Management:** Implement OIDC for secure access control within the CI pipeline.
-
 
 
 
