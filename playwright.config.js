@@ -13,7 +13,7 @@ module.exports = defineConfig({
     ['@estruyf/github-actions-reporter']
   ],
   use: {
-    baseURL: 'https://gumbs.me',
+    baseURL: process.env.BASE_URL || 'https://gumbs.me',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure'
   },

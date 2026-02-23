@@ -1,12 +1,12 @@
-variable "region" {
-  description = "AWS region"
-  type        = string
-  default     = "us-east-1"
-}
-
 variable "environment" {
   description = "Environment to deploy"
   type        = string
+  nullable    = false
+
+  validation {
+    condition     = contains(["production", "staging"], var.environment)
+    error_message = "Environment must be 'production' or 'staging'."
+  }
 }
 
 variable "bucket_name" {
@@ -38,11 +38,6 @@ variable "index_page" {
   default     = "index.html"
 }
 
-variable "dist_filepath" {
-  description = "Relative Path to Dist files"
-  type        = string
-}
-
 variable "ddb_jokes_table_data" {
   description = "DynamoDB Jokes table data"
   type = object({
@@ -63,4 +58,10 @@ variable "ddb_visitor_table_data" {
       type = string
     })
   })
+}
+
+variable "force_destroy" {
+  description = "Allow the S3 bucket to be destroyed even when non-empty. Set true only for non-production environments."
+  type        = bool
+  default     = false
 }

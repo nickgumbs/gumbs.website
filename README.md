@@ -41,7 +41,7 @@ npm run cypress:open
 # Run Cypress headless (expects the dev server running)
 npm run cypress:run
 
-# Run Playwright tests (defaults to https://gumbs.website)
+# Run Playwright tests (defaults to https://gumbs.me)
 npm run playwright:run
 ```
 

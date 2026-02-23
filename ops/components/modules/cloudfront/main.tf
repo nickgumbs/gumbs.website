@@ -35,7 +35,7 @@ resource "aws_cloudfront_distribution" "website_cloudfront_distribution" {
 }
 
 resource "aws_cloudfront_origin_access_control" "website_oac" {
-  name                              = var.s3_bucket_regional_domain_name
+  name                              = "${var.bucket_name}-oac"
   description                       = "Origin Access Control for ${var.environment} environment"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"

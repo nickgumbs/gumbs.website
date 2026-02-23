@@ -1,29 +1,13 @@
 locals {
-  bucket_name = "${var.bucket_name}-${random_string.random_id[0].id}"
-  content_types = {
-    css         = "text/css"
-    html        = "text/html"
-    ico         = "image/x-icon"
-    jpeg        = "image/jpeg"
-    jpg         = "image/jpeg"
-    json        = "application/json"
-    js          = "application/javascript"
-    map         = "application/json"
-    pdf         = "application/pdf"
-    png         = "image/png"
-    svg         = "image/svg+xml"
-    webmanifest = "application/manifest+json"
-    xml         = "application/xml"
-  }
+  bucket_name = var.bucket_name
 }
 
 module "s3" {
-  source              = "../../components/modules/s3"
-  environment         = var.environment
-  bucket_name         = local.bucket_name
-  root_domain         = var.root_domain
-  dist_filepath       = var.dist_filepath
-  cf_distribution_arn = module.cloudfront.cf_distribution_arn
+  source                        = "../../components/modules/s3"
+  environment                   = var.environment
+  bucket_name                   = local.bucket_name
+  force_destroy                 = var.force_destroy
+  cloudfront_distribution_arn   = module.cloudfront.cf_distribution_arn
 }
 
 module "cloudfront" {
@@ -36,7 +20,6 @@ module "cloudfront" {
   s3_bucket_id                   = module.s3.s3_bucket_id
   s3_bucket_regional_domain_name = module.s3.s3_bucket_regional_domain_name
   acm_certificate_arn            = module.acm.acm_certificate_arn
-
 }
 
 module "acm" {
@@ -60,13 +43,42 @@ module "dynamodb" {
   environment        = var.environment
 }
 
+module "lambda" {
+  source        = "../../components/modules/lambda"
+  function_name = "gumbs-api-${var.environment}"
+  source_dir    = "${path.root}/../../lambda"
+  runtime       = "python3.12"
+  environment   = var.environment
+  environment_variables = {
+    JOKES_TABLE    = module.dynamodb.jokes_table_name
+    VISITORS_TABLE = module.dynamodb.visitor_table_name
+  }
+  dynamodb_table_arns = [
+    module.dynamodb.jokes_table_arn,
+    module.dynamodb.visitor_table_arn
+  ]
+}
+
+module "apigateway" {
+  source               = "../../components/modules/apigateway"
+  api_name             = "gumbs-api-${var.environment}"
+  environment          = var.environment
+  lambda_invoke_arn    = module.lambda.invoke_arn
+  lambda_function_name = module.lambda.function_name
+}
+
+resource "aws_s3_object" "app_config" {
+  bucket       = module.s3.s3_bucket_id
+  key          = "data/config.json"
+  content_type = "application/json"
+  content = jsonencode({
+    api = {
+      base_url = module.apigateway.api_base_url
+    }
+  })
+}
+
 data "aws_route53_zone" "hosted_zone" {
   name = var.hosted_zone_name
 }
 
-resource "random_string" "random_id" {
-  length  = 16
-  count   = 1
-  special = false
-  upper   = false
-}

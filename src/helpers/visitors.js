@@ -10,12 +10,10 @@ function reqListener() {
 
 // FInitiate the joke API request
 function refreshCount() {
+  if (!window.APP_CONFIG?.api?.base_url) return;
   var oReq = new XMLHttpRequest();
   oReq.addEventListener('load', reqListener);
-  oReq.open(
-    'GET',
-    'https://ydemw5gqe7.execute-api.us-east-2.amazonaws.com/Prod/visit'
-  );
+  oReq.open('GET', window.APP_CONFIG.api.base_url + '/visit');
   oReq.send();
 }
 

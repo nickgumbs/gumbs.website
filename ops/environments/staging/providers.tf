@@ -2,15 +2,18 @@ provider "aws" {
   region = "us-east-1"
 }
 
-provider "random" {}
+provider "archive" {}
 
 terraform {
+  required_version = "~> 1.9"
   required_providers {
     aws = {
-      version = "~> 5.78.0"
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
     }
-    random = {
-      version = "~> 3.6.3"
+    archive = {
+      source  = "hashicorp/archive"
+      version = "~> 2.4"
     }
   }
 }

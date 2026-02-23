@@ -16,12 +16,10 @@ function reqListener() {
 
 // FInitiate the joke API request
 function getJoke() {
+  if (!window.APP_CONFIG?.api?.base_url) return;
   var oReq = new XMLHttpRequest();
   oReq.addEventListener('load', reqListener);
-  oReq.open(
-    'GET',
-    'https://a8cnf30t7l.execute-api.us-east-2.amazonaws.com/Prod/jokes'
-  );
+  oReq.open('GET', window.APP_CONFIG.api.base_url + '/jokes');
   oReq.send();
 }
 

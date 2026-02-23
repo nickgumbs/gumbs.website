@@ -3,23 +3,19 @@ variable "environment" {
   type        = string
 }
 
-variable "root_domain" {
-  description = "The root domain name (e.g., example.com)"
-  type        = string
-}
-
 variable "bucket_name" {
   description = "The name of the S3 bucket"
   type        = string
 }
 
-variable "dist_filepath" {
-  description = "Path to Dist files"
-  type        = string
+variable "force_destroy" {
+  description = "Allow bucket to be destroyed even when non-empty. Set true only for non-production environments."
+  type        = bool
+  default     = false
 }
 
-variable "cf_distribution_arn" {
-  description = "Cloudfront Distribution ARN"
+variable "cloudfront_distribution_arn" {
+  description = "ARN of the CloudFront distribution to allow S3 access"
   type        = string
 }
 
