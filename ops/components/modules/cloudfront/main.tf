@@ -7,7 +7,7 @@ resource "aws_cloudfront_distribution" "website_cloudfront_distribution" {
 
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "Distribution for ${var.environment} website"
+  comment             = var.root_domain
   default_root_object = var.index_page
 
   aliases = ["www.${var.root_domain}", var.root_domain]
